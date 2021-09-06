@@ -8,8 +8,9 @@ public class Paint extends JFrame implements KeyListener {
     private final DrawPanel drawPanel;
 
     public Paint () {
+        setTitle( "Paint" );
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        drawPanel = new DrawPanel( 1000, 1000 );
+        drawPanel = new DrawPanel( 800, 800 );
         add( drawPanel );
         addKeyListener( this );
         pack();
