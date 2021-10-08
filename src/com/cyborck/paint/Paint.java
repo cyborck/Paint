@@ -24,9 +24,14 @@ public class Paint extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed ( KeyEvent e ) {
-        if ( e.getKeyChar() == 'c' )
-            drawPanel.clear();
-        else if ( e.getKeyCode() == KeyEvent.VK_ESCAPE )
+        if ( ( e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK ) != 0 ) {
+            //if control is pressed
+            switch ( e.getKeyCode() ) {
+                case KeyEvent.VK_C -> drawPanel.clear();
+                case KeyEvent.VK_Z -> drawPanel.undo();
+                case KeyEvent.VK_Y -> drawPanel.redo();
+            }
+        } else if ( e.getKeyCode() == KeyEvent.VK_ESCAPE )
             System.exit( 0 );
     }
 
